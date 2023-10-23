@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "./generated/type-graphql"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model burns {
+  evt_tx_hash      String?   @db.VarChar(64)
+  evt_index        Int?
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount           Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  owner            String?   @db.VarChar(40)
+  tick_lower       Int?
+  tick_upper       Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model collect_protocols {
+  evt_tx_hash      String?   @db.VarChar(64)
+  evt_index        Int?
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  recipient        String?   @db.VarChar(40)
+  sender           String?   @db.VarChar(40)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model collects {
+  evt_tx_hash      String?   @db.VarChar(64)
+  evt_index        Int?
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  owner            String?   @db.VarChar(40)
+  recipient        String?   @db.VarChar(40)
+  tick_lower       Int?
+  tick_upper       Int?
+
+  @@ignore
+}
+
+model cursors {
+  id        String  @id(map: "cursor_pk")
+  cursor    String?
+  block_num BigInt?
+  block_id  String?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model flashes {
+  evt_tx_hash      String   @db.VarChar(64)
+  evt_index        Int
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  paid_0           Decimal?  @db.Decimal
+  paid_1           Decimal?  @db.Decimal
+  recipient        String?   @db.VarChar(40)
+  sender           String?   @db.VarChar(40)
+
+  @@id([evt_tx_hash, evt_index])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model increase_observation_cardinality_nexts {
+  evt_tx_hash                      String   @db.VarChar(64)
+  evt_index                        Int
+  evt_block_time                   DateTime? @db.Timestamp(6)
+  evt_block_number                 Decimal?  @db.Decimal
+  observation_cardinality_next_new Int?
+  observation_cardinality_next_old Int?
+
+  @@id([evt_tx_hash, evt_index])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model initializes {
+  evt_tx_hash      String  @db.VarChar(64)
+  evt_index        Int
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  sqrt_price_x_96  Decimal?  @db.Decimal
+  tick             Int?
+
+  @@id([evt_tx_hash, evt_index])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mints {
+  evt_tx_hash      String   @db.VarChar(64)
+  evt_index        Int
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount           Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  owner            String?   @db.VarChar(40)
+  sender           String?   @db.VarChar(40)
+  tick_lower       Int?
+  tick_upper       Int?
+
+  @@id([evt_tx_hash, evt_index])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model set_fee_protocols {
+  evt_tx_hash        String   @db.VarChar(64)
+  evt_index          Int
+  evt_block_time     DateTime? @db.Timestamp(6)
+  evt_block_number   Decimal?  @db.Decimal
+  fee_protocol_0_new Int?
+  fee_protocol_0_old Int?
+  fee_protocol_1_new Int?
+  fee_protocol_1_old Int?
+
+  @@id([evt_tx_hash, evt_index])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model swaps {
+  evt_tx_hash      String   @db.VarChar(64)
+  evt_index        Int
+  evt_block_time   DateTime? @db.Timestamp(6)
+  evt_block_number Decimal?  @db.Decimal
+  amount_0         Decimal?  @db.Decimal
+  amount_1         Decimal?  @db.Decimal
+  liquidity        Decimal?  @db.Decimal
+  recipient        String?   @db.VarChar(40)
+  sender           String?   @db.VarChar(40)
+  sqrt_price_x_96  Decimal?  @db.Decimal
+  tick             Int?
+
+  @@id([evt_tx_hash, evt_index])
+}

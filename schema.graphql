@@ -1,0 +1,107 @@
+type burns @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount: BigDecimal!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    owner: String!
+    tick_lower: Int!
+    tick_upper: Int!
+}
+type collects @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    owner: String!
+    recipient: String!
+    tick_lower: Int!
+    tick_upper: Int!
+}
+type collect_protocols @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    recipient: String!
+    sender: String!
+}
+type flashes @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    paid_0: BigDecimal!
+    paid_1: BigDecimal!
+    recipient: String!
+    sender: String!
+}
+type increase_observation_cardinality_nexts @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    observation_cardinality_next_new: Int!
+    observation_cardinality_next_old: Int!
+}
+type initializes @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    sqrt_price_x_96: BigDecimal!
+    tick: Int!
+}
+type mints @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount: BigDecimal!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    owner: String!
+    sender: String!
+    tick_lower: Int!
+    tick_upper: Int!
+}
+type set_fee_protocols @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    fee_protocol_0_new: Int!
+    fee_protocol_0_old: Int!
+    fee_protocol_1_new: Int!
+    fee_protocol_1_old: Int!
+}
+type swaps @entity {
+    id: ID!
+    evt_tx_hash: String!
+    evt_index: BigInt!
+    evt_block_time: String!
+    evt_block_number: BigInt!
+    amount_0: BigDecimal!
+    amount_1: BigDecimal!
+    liquidity: BigDecimal!
+    recipient: String!
+    sender: String!
+    sqrt_price_x_96: BigDecimal!
+    tick: Int!
+}

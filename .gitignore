@@ -1,0 +1,14 @@
+node_modules
+# Keep environment variables out of version control
+.env
+data
+prisma/generated
+
+.idea
+/target/
+*.spkg
+*~
+/env/
+/build
+debug.log
+replay.log

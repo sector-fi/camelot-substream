@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package contract.v1;
+
+message Events {
+    repeated Fee fees = 1;
+    repeated Swap swaps = 2;
+}
+
+message Fee {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string evt_address = 5;
+    uint32 feeZtO = 6;
+    uint32 feeOtZ = 7;
+}
+
+message Swap {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string evt_address = 5;
+    bytes sender = 6;
+    bytes recipient = 7;
+    string amount0 = 8;
+    string amount1 = 9;
+    string price = 10;
+    string liquidity = 11;
+    int64 tick = 12;
+}
